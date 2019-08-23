@@ -1,0 +1,10 @@
+{
+    "name": "dawnstar/curse",
+    "description": "for bad words",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Curse\\": "src"
+        }
+    }
+}
