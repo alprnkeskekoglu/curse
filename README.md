@@ -54,7 +54,7 @@ $filtered_text = Curse::setText("Filtrelenmesi istenen text")
 ```
 
 ## Note
-Packet başka repository'den esinlenerek yapılmıştır. Orjinal paket [Link](https://github.com/90pixel/kufur-filtresi)
+Paket başka repository'den esinlenerek yapılmıştır. [Orjinal Paket](https://github.com/90pixel/kufur-filtresi)
 
 ## License
 
