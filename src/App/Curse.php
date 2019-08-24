@@ -160,7 +160,7 @@ class Curse
      */
     public function setHardRegex(string $hard_regex): Curse
     {
-        $this->soft_regex = $hard_regex;
+        $this->hard_regex = $hard_regex;
         return $this;
     }
 
