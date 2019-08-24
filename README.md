@@ -42,7 +42,7 @@ $soft_file_words = Curse::getSoftFile();
 //Filtrelenecek text'in ve yerine yazılacak text'in set edilmesi,
 //init fonksiyonu ile filtreleme gerçekleştirilir. 
 //init fonksiyonuna parametre verilerek ("soft" | "hard") istenilen türde filtreleme yapılabilir.
-$filtered_text = Curse::setText("yarak kürek işler bunlar amk tuzlayarak ansiklopedi")
+$filtered_text = Curse::setText("Filtrelenmesi istenen text")
         ->setReplacementText("***")
         ->init();
 ```
