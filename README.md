@@ -1,3 +1,8 @@
+## Küfür Filtresi
+Paket, string ifadelerde küfür filtresi yapılması için hazırlanmıştır. Paket dile bağlı çalışabilmektedir. Şu an da sadece Türkçe için kelime listeleri bulunmaktadır. 
+**Paket her türlü geliştirmeye açıktır.**
+
+
 ## Installation
 
 Kurmak için composer kullanılmalıdır.
@@ -33,6 +38,7 @@ return [
 Here are a few examples using periods 
 ```php
 //Soft File dosyasının yolunu set etmeyi sağlar
+//Dosyaların içindeki kelimeler satır satır ayrılmalıdır.
 $curse = Curse::setSoftFile(public_path('soft.txt'));
 
 //Filtrelenecek küfürlerin olduğu dosyaları çekmek için
