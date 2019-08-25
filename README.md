@@ -2,6 +2,9 @@
 Paket, string ifadelerde küfür filtresi yapılması için hazırlanmıştır. Paket dile bağlı çalışabilmektedir. Şu an da sadece Türkçe için kelime listeleri bulunmaktadır. 
 **Paket her türlü geliştirmeye açıktır.**
 
+- **soft.txt** isimli dosyada yer alan terimler ancak tek başına bir kelime olarak kullanıldığında filtrelenmesi gereken terimlerdir. Bir kelime içerisinde geçtiğinde filtrelenmesi gerekmeyen bir kelime olabilir.
+- **hard.txt** isimli dosyada yer alan terimler ise başka herhangi bir kelime içerisinde geçse bile filtrelenmesi gereken, temiz bir kelimenin içerisinde geçme ihtimali çok zor olan terimlerdir.
+
 
 ## Installation
 
