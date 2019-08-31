@@ -6,5 +6,15 @@
         "psr-4": {
             "Curse\\": "src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Curse\\Providers\\CurseServiceProvider"
+            ],
+            "aliases": {
+                "Curse": "Curse\\Facades\\CurseFacade"
+            }
+        }
     }
 }
