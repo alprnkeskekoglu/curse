@@ -1,6 +1,6 @@
 {
     "name": "dawnstar/curse",
-    "description": "for bad words",
+    "description": "Laravel projeler için küfür filtresi",
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {

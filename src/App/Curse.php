@@ -164,6 +164,48 @@ class Curse
         return $this;
     }
 
+    public function check(string $type = null): bool
+    {
+        if ($type === 'soft') {
+            return $this->checkSoft();
+        }
+
+        if ($type === 'hard') {
+            return $this->checkHard();
+        }
+
+
+        if ($this->checkSoft()) {
+            return $this->checkHard();
+        }
+        return false;
+    }
+
+    private function checkSoft()
+    {
+        $soft_file = implode("|", $this->getSoftFile());
+        $soft_regex = sprintf($this->soft_regex, $soft_file);
+
+        preg_match($soft_regex, $this->text, $return);
+        if (count($return) <= 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private function checkHard()
+    {
+        $hard_file = implode("|", $this->getHardFile());
+        $hard_regex = sprintf($this->hard_regex, $hard_file);
+
+        preg_match($hard_regex, $this->text, $return);
+
+        if (count($return) <= 0) {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Filtrelenecek cümle, kelime vs. değişkeni içerisinde belirtilen filtre türüne göre işlem yapar.
      * Eğer tür belirtilmezse önce soft sonra hard olmak filtre uygular.
