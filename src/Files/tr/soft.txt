@@ -3,6 +3,7 @@ aq
 a.q
 a.q.
 amk
+amq
 çük
 oç
 o.ç
@@ -13,3 +14,5 @@ piç
 pipi
 sik
 yarak
+kaka
+bok

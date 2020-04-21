@@ -31,6 +31,12 @@ class Curse
      * @var string
      */
     protected $text = "";
+
+    /**
+     * Filtrelenen kelimelerin değiştirileceği text
+     *
+     * @var string
+     */
     protected $replacement_text = "***";
 
     /**
@@ -39,6 +45,12 @@ class Curse
      * @var string
      */
     protected $soft_regex = '/(\b)+(%s)+(\b)/ui';
+
+    /**
+     * Hard kelimeler için kullanılacak regex
+     *
+     * @var string
+     */
     protected $hard_regex = '/(%s)/ui';
 
     /**
@@ -57,6 +69,16 @@ class Curse
     }
 
     /**
+     * Filtrelenecek dili döndürür.
+     *
+     * @return string
+     */
+    public function getLanguage(): string
+    {
+        return $this->language;
+    }
+
+    /**
      * Kelimelerin ait olduğu dili ayarlar.
      *
      * @param string $language_code
@@ -65,6 +87,8 @@ class Curse
     public function setLanguage($language_code): Curse
     {
         $this->language = $language_code;
+
+        $this->setDefaultFilePaths();
         return $this;
     }
 
@@ -116,6 +140,15 @@ class Curse
         return $this;
     }
 
+    /**
+     * Filtrelenecek cümle, kelime vs. döndürür.
+     *
+     * @return string
+     */
+    public function getText(): string
+    {
+        return $this->text;
+    }
     /**
      * Filtrelenecek cümle, kelime vs. set etme işlevini görür.
      *
@@ -175,25 +208,25 @@ class Curse
         }
 
 
-        if ($this->checkSoft()) {
+        if ($this->checkSoft() === false) {
             return $this->checkHard();
         }
-        return false;
+        return true;
     }
 
-    private function checkSoft()
+    private function checkSoft(): bool
     {
         $soft_file = implode("|", $this->getSoftFile());
         $soft_regex = sprintf($this->soft_regex, $soft_file);
 
         preg_match($soft_regex, $this->text, $return);
         if (count($return) <= 0) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
-    private function checkHard()
+    private function checkHard(): bool
     {
         $hard_file = implode("|", $this->getHardFile());
         $hard_regex = sprintf($this->hard_regex, $hard_file);
@@ -201,14 +234,14 @@ class Curse
         preg_match($hard_regex, $this->text, $return);
 
         if (count($return) <= 0) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     /**
      * Filtrelenecek cümle, kelime vs. değişkeni içerisinde belirtilen filtre türüne göre işlem yapar.
-     * Eğer tür belirtilmezse önce soft sonra hard olmak filtre uygular.
+     * Eğer tür belirtilmezse önce soft sonra hard filtre uygular.
      *
      * @param string $type
      * @return string
@@ -228,14 +261,16 @@ class Curse
         return $this->initHard($soft_text);
     }
 
-    private function initSoft() {
+    private function initSoft()
+    {
         $soft_file = implode("|", $this->getSoftFile());
         $soft_regex = sprintf($this->soft_regex, $soft_file);
 
         return preg_replace($soft_regex, $this->replacement_text, $this->text);
     }
 
-    private function initHard($hard_text) {
+    private function initHard($hard_text)
+    {
         $hard_file = implode("|", $this->getHardFile());
         $hard_regex = sprintf($this->hard_regex, $hard_file);
 
